@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  HttpException,
 } from '@nestjs/common';
 import { CrearUsuarioDTO, ActualizarUsuarioDTO } from './dto';
 import { UsuariosService } from './usuarios.service';
@@ -17,7 +18,9 @@ export class UsuariosController {
   constructor(private servicioUsuario: UsuariosService) {}
 
   @Post()
-  crearUsuario(@Body() nuevoUsuario: CrearUsuarioDTO): Promise<Usuario> {
+  crearUsuario(
+    @Body() nuevoUsuario: CrearUsuarioDTO,
+  ): Promise<Usuario | HttpException> {
     return this.servicioUsuario.crearUsuario(nuevoUsuario);
   }
 
@@ -27,7 +30,9 @@ export class UsuariosController {
   }
 
   @Get(':id')
-  obtenerUsuario(@Param('id', ParseIntPipe) id: number): Promise<Usuario> {
+  obtenerUsuario(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<Usuario | HttpException> {
     return this.servicioUsuario.obtenerUsuario(id);
   }
 
