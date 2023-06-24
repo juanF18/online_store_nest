@@ -15,7 +15,7 @@ export class Producto {
   @Column({ type: 'float' })
   precio: number;
 
-  @OneToMany(() => Pedido, (pedido) => pedido.usuario_id)
+  @OneToMany(() => Pedido, (pedido) => pedido.producto)
   pedidos: Pedido[];
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
