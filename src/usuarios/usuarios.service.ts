@@ -16,4 +16,20 @@ export class UsuariosService {
     const nuevoUsuario = this.usuarioRepositorio.create(usuario);
     return this.usuarioRepositorio.save(nuevoUsuario);
   }
+
+  obtenerUsuarios() {
+    return this.usuarioRepositorio.find();
+  }
+
+  obtenerUsuario(id: number) {
+    return this.usuarioRepositorio.findOne({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  eliminarUsuario(id: number) {
+    return this.usuarioRepositorio.delete({ id });
+  }
 }
