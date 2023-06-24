@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from './usuarios/usuario.entity';
+import { ProductosModule } from './productos/productos.module';
 import 'dotenv/config';
 
 @Module({
@@ -20,6 +21,7 @@ import 'dotenv/config';
       synchronize: true,
       logging: false,
     }),
+    ProductosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
