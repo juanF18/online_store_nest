@@ -15,7 +15,7 @@ export class Usuario {
   @Column()
   contrasena: string;
 
-  @OneToMany(() => Pedido, (pedido) => pedido.usuario_id)
+  @OneToMany(() => Pedido, (pedido) => pedido.usuario)
   pedidos: Pedido[];
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
