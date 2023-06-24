@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Usuario } from './usuario.entity';
 import { Repository } from 'typeorm';
-import { CrearUsuarioDTO } from './dto/crear-usuario.dto';
+import { CrearUsuarioDTO, ActualizarUsuarioDTO } from './dto';
 /**
  * Servicios basicos de CRUD utilizando un DTO (date transfer object)
  */
@@ -31,5 +31,9 @@ export class UsuariosService {
 
   eliminarUsuario(id: number) {
     return this.usuarioRepositorio.delete({ id });
+  }
+
+  actualizarUsuario(id: number, usuario: ActualizarUsuarioDTO) {
+    this.usuarioRepositorio.update({ id }, { ...usuario });
   }
 }
