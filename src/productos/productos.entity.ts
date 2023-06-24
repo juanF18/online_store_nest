@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Pedido } from 'src/pedidos/pedido.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Producto {
@@ -13,6 +14,9 @@ export class Producto {
 
   @Column({ type: 'float' })
   precio: number;
+
+  @OneToMany(() => Pedido, (pedido) => pedido.usuario_id)
+  pedidos: Pedido[];
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
