@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Usuario } from './usuarios/usuario.entity';
 import 'dotenv/config';
 
 @Module({
@@ -15,7 +16,7 @@ import 'dotenv/config';
       username: process.env.DEV_USER,
       password: process.env.DEV_PASS,
       database: process.env.DEV_DB_NAME,
-      entities: [__dirname + '/**/*.entity.ts'],
+      entities: [Usuario],
       synchronize: true,
       logging: false,
     }),
