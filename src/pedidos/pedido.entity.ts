@@ -13,12 +13,6 @@ export class Pedido {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  usuario_id: number;
-
-  @Column()
-  producto_id: number;
-
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   fecha: Date;
 

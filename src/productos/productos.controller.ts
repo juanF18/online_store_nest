@@ -38,7 +38,7 @@ export class ProductosController {
 
   @Delete(':id')
   eliminarProducto(@Param('id', ParseIntPipe) id: number) {
-    this.servicioProducto.eliminarProducto(id);
+    return this.servicioProducto.eliminarProducto(id);
   }
 
   @Patch(':id')
