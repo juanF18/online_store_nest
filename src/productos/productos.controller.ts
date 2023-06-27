@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Header,
   HttpException,
   Param,
   ParseIntPipe,
@@ -18,6 +19,7 @@ export class ProductosController {
   constructor(private servicioProducto: ProductosService) {}
 
   @Post()
+  @Header('Content-Type', 'application/json')
   crearProducto(
     @Body() nuevoProducto: CrearProductoDTO,
   ): Promise<Producto | HttpException> {
@@ -25,11 +27,13 @@ export class ProductosController {
   }
 
   @Get()
+  @Header('Content-Type', 'application/json')
   obtenerProductos(): Promise<Producto[]> {
     return this.servicioProducto.obtenerProductos();
   }
 
   @Get(':id')
+  @Header('Content-Type', 'application/json')
   obtenerProducto(
     @Param('id', ParseIntPipe) id: number,
   ): Promise<Producto | HttpException> {
@@ -42,6 +46,7 @@ export class ProductosController {
   }
 
   @Patch(':id')
+  @Header('Content-Type', 'application/json')
   actualizarProducto(
     @Param('id', ParseIntPipe) id: number,
     @Body() producto: ActualizarProductoDTO,
